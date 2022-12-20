@@ -33,20 +33,6 @@ Running an experiment is simple:
 python3 ../main.py  --data /path_to_/data/ --results /path_to/results --experiment_name baseline --aug --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt
 
 ```
-with 
-
-```python
-  --data - /path_to_/data/
-  --results - /path_to/results 
-  --experiment_name name of experiment
-  --aug - to use augmentation
-  --scheduler 
-  --learning_rate
-  --epochs 
-  --amp 
-  --save_ckpt
-
-```
 
 ## Run validation runs to validate your model performance:
 

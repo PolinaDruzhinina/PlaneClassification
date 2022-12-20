@@ -1,0 +1,7 @@
+notebooks/logs/
+scripts/wandb/
+data/plane_classification
+results/
+baseline_best_metric_model.pth
+__pycache__/
+.ipynb_checkpoints

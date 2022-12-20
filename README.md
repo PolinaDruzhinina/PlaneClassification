@@ -26,7 +26,7 @@ torchmetrics==0.11.0
 
 The main entry-point of the project is through the `main.py` file. 
 
-# Running an experiment
+## Running an experiment
 Running an experiment is simple:
 
 ```python
@@ -34,7 +34,21 @@ python3 ../main.py  --data /path_to_/data/ --results /path_to/results --experime
 
 ```
 with 
-# Run validation runs to validate your model performance:
+
+```python
+  --data - /path_to_/data/
+  --results - /path_to/results 
+  --experiment_name name of experiment
+  --aug - to use augmentation
+  --scheduler 
+  --learning_rate
+  --epochs 
+  --amp 
+  --save_ckpt
+
+```
+
+## Run validation runs to validate your model performance:
 
 ```python
 python3 ../main.py --exec_mode evaluate --data /path_to/data/ --results /path_to/results --experiment_name baseline_test --aug --scheduler --amp --ckpt_path /path_to_checpoints.ckpt

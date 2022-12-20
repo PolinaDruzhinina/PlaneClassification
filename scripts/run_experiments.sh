@@ -29,6 +29,9 @@
 
 # export CUDA_VISIBLE_DEVICES=1 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name loss_weights_intensity.hist_lr --aug --loss_weights --scheduler --learning_rate 0.0003 --epochs 80 --amp --save_ckpt 
 
+
+# export CUDA_VISIBLE_DEVICES=0 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name resnet --resnet --aug --loss_weights  --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt
+
 # 1.baseline cross_val GroupShuffleSplit
 # export CUDA_VISIBLE_DEVICES=0 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name baseline_GroupShuffleSplit_fold_0 --cross_val --nfolds 3 --fold 0 --aug --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt
 
@@ -36,4 +39,18 @@
 
 # export CUDA_VISIBLE_DEVICES=0 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name baseline_GroupShuffleSplit_fold_2 --cross_val --nfolds 3 --fold 2 --aug --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt
 
-export CUDA_VISIBLE_DEVICES=0 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name resnet --resnet --aug --loss_weights  --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt
+
+# export CUDA_VISIBLE_DEVICES=0 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name baseline_GroupShuffleSplit_fold_0 --cross_val --loss_weights --nfolds 3 --fold 0 --aug --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt
+
+# export CUDA_VISIBLE_DEVICES=0 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name baseline_GroupShuffleSplit_fold_1 --cross_val --loss_weights --nfolds 3 --fold 1 --aug --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt
+
+# export CUDA_VISIBLE_DEVICES=0 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name baseline_GroupShuffleSplit_fold_2 --cross_val --loss_weights --nfolds 3 --fold 2 --aug --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt
+
+
+# GroupShuffleSplit
+
+export CUDA_VISIBLE_DEVICES=0 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name baseline_StratifiedGroupKFold_fold_0 --cross_val --loss_weights --nfolds 3 --fold 0 --aug --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt
+
+export CUDA_VISIBLE_DEVICES=0 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name baseline_StratifiedGroupKFold_fold_1 --cross_val --loss_weights --nfolds 3 --fold 1 --aug --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt
+
+export CUDA_VISIBLE_DEVICES=0 && python3 ../main.py  --data /home/polina/projects/test/data/ --results /home/polina/projects/test/results --experiment_name baseline_StratifiedGroupKFold_fold_2 --cross_val --loss_weights --nfolds 3 --fold 2 --aug --scheduler --learning_rate 0.0001 --epochs 60 --amp --save_ckpt

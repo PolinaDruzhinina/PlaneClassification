@@ -17,7 +17,7 @@ from monai.transforms import (
     ToTensor
 )
 from monai.utils import set_determinism
-from sklearn.model_selection import train_test_split,GroupShuffleSplit
+from sklearn.model_selection import train_test_split,StratifiedGroupKFold
 from sklearn.preprocessing import LabelEncoder
 import h5py
 
@@ -97,4 +97,4 @@ class DataModule(LightningDataModule):
         return  DataLoader(self.test_ds, batch_size=self.args.val_batch_size, num_workers=10)
 
     def get_kfold_splitter(self, nfolds):
-        return GroupShuffleSplit(n_splits=nfolds,train_size=.7, random_state=self.args.seed)
+        return StratifiedGroupKFold(n_splits=nfolds)

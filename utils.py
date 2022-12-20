@@ -57,6 +57,7 @@ def get_main_args(strings=None):
     arg("--ckpt_path", type=str, default=None, help="Path to checkpoint")
     arg("--cross_val", action="store_true", help="Enable cross validation" )
     arg("--resnet", action="store_true", help="Enable resnet architecture" )
+    arg("--auc", action="store_true", help="Calculate metric auc" )
     arg("--nfolds", type=positive_int, default=5, help="Number of cross-validation folds")
     arg("--fold", type=non_negative_int, default=0, help="Fold number")
     arg("--patience", type=positive_int, default=10, help="Early stopping patience")

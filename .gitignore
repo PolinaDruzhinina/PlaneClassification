@@ -129,7 +129,9 @@ dmypy.json
 .pyre/
 
 notebooks/logs/
+notebooks/wandb/
 scripts/wandb/
+scripts/run_experiments.sh
 data/plane_classification
 results/
 baseline_best_metric_model.pth

@@ -38,6 +38,7 @@ class NetModule(pl.LightningModule):
         if self.args.resnet:
             self.model = create_model(self.args.out_channels)
         else: 
+            print('check')
             self.model = DenseNet121(spatial_dims=2, in_channels=1,
                         out_channels=self.args.out_channels)
         if self.args.loss_weights:
@@ -89,29 +90,28 @@ class NetModule(pl.LightningModule):
         prediction = self.model(imgs)
         loss = self.loss_module(prediction, labels)
         acc = (labels == prediction.argmax(dim=-1)).float().mean()
-        y_onehot = [self.y_trans(i) for i in decollate_batch(labels, detach=False)]
-        y_pred_act = [self.y_pred_trans(i) for i in decollate_batch(prediction)]
-        self.auc_metric(y_pred_act, y_onehot)
-        result = self.auc_metric.aggregate()
-        self.auc_metric.reset()
-        del y_pred_act, y_onehot
-        
+        if self.args.auc:
+            y_onehot = [self.y_trans(i) for i in decollate_batch(labels, detach=False)]
+            y_pred_act = [self.y_pred_trans(i) for i in decollate_batch(prediction)]      
+            self.auc_metric(y_pred_act, y_onehot)
+            result = self.auc_metric.aggregate()
+            self.auc_metric.reset()
+            del y_pred_act, y_onehot
+            self.log("val_auc", result)
         # By default logs it per epoch (weighted average over batches)
         self.log("val_acc", acc)
-        self.log("val_auc", result)
         self.log("val_loss", loss)
 
     def test_step(self, batch, batch_idx):
         imgs, labels = batch
         prediction = self.model(imgs)
         acc = (labels == prediction.argmax(dim=-1)).float().mean()
-        
-        y_onehot = [self.y_trans(i) for i in decollate_batch(labels, detach=False)]
-        y_pred_act = [self.y_pred_trans(i) for i in decollate_batch(prediction)]
-        self.auc_metric(y_pred_act, y_onehot)
-        result = self.auc_metric.aggregate()
-        self.auc_metric.reset()
-        del y_pred_act, y_onehot
-        
+        if self.args.auc:
+            y_onehot = [self.y_trans(i) for i in decollate_batch(labels, detach=False)]
+            y_pred_act = [self.y_pred_trans(i) for i in decollate_batch(prediction)]
+            self.auc_metric(y_pred_act, y_onehot)
+            result = self.auc_metric.aggregate()
+            self.auc_metric.reset()
+            del y_pred_act, y_onehot
+            self.log("test_auc", result)
         self.log("test_acc", acc)
-        self.log("test_auc", result)

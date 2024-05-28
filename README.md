@@ -40,3 +40,6 @@ python3 ../main.py  --data /path_to_/data/ --results /path_to/results --experime
 python3 ../main.py --exec_mode evaluate --data /path_to/data/ --results /path_to/results --experiment_name baseline_test --aug --scheduler --amp --ckpt_path /path_to_checpoints.ckpt
 ```
 
+
+test
+
